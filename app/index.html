@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vice Nights — GTA-Style Cover Maker</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<main class="app">
+  <section class="controls" aria-label="Cover controls">
+    <h1>Vice Nights</h1>
+    <p class="tagline">Turn your photos into a GTA-style poster cover. Three steps: add photos, pick a layout and grade, export.</p>
+
+    <fieldset>
+      <legend>1 · Your photos</legend>
+      <div class="slot">
+        <label>Photo A <input id="photo-0" type="file" accept="image/*"></label>
+        <button id="sample-0" type="button" class="mini">Use sample</button>
+        <span id="slot-0-name" class="slot-name">No photo yet</span>
+      </div>
+      <div class="slot">
+        <label>Photo B <input id="photo-1" type="file" accept="image/*"></label>
+        <button id="sample-1" type="button" class="mini">Use sample</button>
+        <span id="slot-1-name" class="slot-name">No photo yet</span>
+      </div>
+      <div class="slot">
+        <label>Photo C <input id="photo-2" type="file" accept="image/*"></label>
+        <button id="sample-2" type="button" class="mini">Use sample</button>
+        <span id="slot-2-name" class="slot-name">No photo yet</span>
+      </div>
+      <button id="fill-all" type="button" class="mini">Fill all panels with one photo</button>
+      <p class="hint">Photos stay on your machine — nothing is uploaded.</p>
+    </fieldset>
+
+    <fieldset>
+      <legend>2 · Layout &amp; grade</legend>
+      <div id="layout-pick" class="pick-row" role="group" aria-label="Layout"></div>
+      <div id="grade-pick" class="pick-row" role="group" aria-label="Colour grade"></div>
+    </fieldset>
+
+    <fieldset>
+      <legend>3 · Crop a panel</legend>
+      <div id="panel-tabs" class="pick-row" role="group" aria-label="Panel"></div>
+      <label>Photo in this panel
+        <select id="panel-photo">
+          <option value="0">Photo A</option>
+          <option value="1">Photo B</option>
+          <option value="2">Photo C</option>
+        </select>
+      </label>
+      <label><span id="panel-label">Panel 1 crop</span>
+        <span class="slider-row">Zoom <input id="zoom" type="range" min="1" max="2.5" step="0.05" value="1.15"> <span id="zoom-value">115%</span></span>
+      </label>
+      <label>Move left / right <input id="pan-x" type="range" min="-1" max="1" step="0.05" value="0"></label>
+      <label>Move up / down <input id="pan-y" type="range" min="-1" max="1" step="0.05" value="0"></label>
+    </fieldset>
+
+    <fieldset>
+      <legend>4 · Words &amp; effects</legend>
+      <label>Title <input id="title" type="text" maxlength="40" value="Sunset Heist"></label>
+      <label>Subtitle <input id="subtitle" type="text" maxlength="60" value="VICE NIGHTS · EST. 2026"></label>
+      <label>Sticker badge <input id="badge" type="text" maxlength="12" value="NEW"></label>
+      <div class="checks">
+        <label class="check"><input id="halftone" type="checkbox" checked> Halftone dots</label>
+        <label class="check"><input id="vignette" type="checkbox" checked> Vignette</label>
+        <label class="check"><input id="rays" type="checkbox" checked> Sun rays</label>
+        <label class="check"><input id="borders" type="checkbox" checked> Panel borders</label>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>5 · Export size</legend>
+      <div id="size-pick" class="pick-row wrap" role="group" aria-label="Export size"></div>
+      <button id="export" type="button" class="export">Export PNG 1080 × 1080</button>
+      <p id="status" role="status"></p>
+    </fieldset>
+    <p class="fineprint">Original art made with this app. No Rockstar Games logo, artwork, character or font. Display font: Anton (SIL Open Font License), bundled under app/fonts.</p>
+  </section>
+  <section class="preview" aria-label="Live preview">
+    <canvas id="cover" width="1080" height="1080" aria-label="The cover preview"></canvas>
+  </section>
+</main>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
